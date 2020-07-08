@@ -14,5 +14,14 @@ import java.util.List;
 
 public class IPLAnalyser {
 
-
+    public int loadIPLCscData(String csvFilePath ) throws IPLAnalyserException {
+        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
+            ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
+            List<IndianBattingIPLCSV> censusCSVList = csvBuilder.getCSVFileList(reader, IndianBattingIPLCSV.class);
+            return censusCSVList.size();
+        } catch (IOException | CSVBuilderException e) {
+            throw new IPLAnalyserException(e.getMessage(),
+                    IPLAnalyserException.ExceptionType.NO_DATA);
+        }
+    }
 }
