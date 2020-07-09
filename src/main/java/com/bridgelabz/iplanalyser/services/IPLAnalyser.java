@@ -12,16 +12,18 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Comparator;
+import java.util.Iterator;
 import java.util.List;
+import java.util.stream.StreamSupport;
 
 public class IPLAnalyser {
-    List<IndianBattingIPLCSV> IPLCSVList;
+    List<IndianBattingIPLCSV> iPLCSVList;
 
-    public List<IndianBattingIPLCSV> loadIPLCscData(String csvFilePath ) throws IPLAnalyserException {
+    public List<IndianBattingIPLCSV> loadIPLCscData(String csvFilePath) throws IPLAnalyserException {
         try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
-            IPLCSVList = csvBuilder.getCSVFileList(reader, IndianBattingIPLCSV.class);
-            return IPLCSVList;
+            iPLCSVList =csvBuilder.getCSVFileList(reader, IndianBattingIPLCSV.class);
+            return iPLCSVList;
         } catch (IOException | CSVBuilderException e) {
             throw new IPLAnalyserException(e.getMessage(),
                     IPLAnalyserException.ExceptionType.NO_DATA);
@@ -29,11 +31,12 @@ public class IPLAnalyser {
     }
 
     public String sortBattingAverage() throws IPLAnalyserException {
-        if (IPLCSVList == null || IPLCSVList.size() == 0)
+        if (iPLCSVList == null || iPLCSVList.size() == 0)
             throw new IPLAnalyserException("No data", IPLAnalyserException .ExceptionType.NO_DATA);
         Comparator<IndianBattingIPLCSV> IPLComparator = Comparator.comparing(census -> census.battingAvg);
-        IPLCSVList.sort(IPLComparator);
-        String sortedStateCensusJson = new Gson().toJson(IPLCSVList);
+        iPLCSVList.sort(IPLComparator);
+        System.out.println(iPLCSVList);
+        String sortedStateCensusJson = new Gson().toJson(iPLCSVList);
         System.out.println(sortedStateCensusJson);
         return sortedStateCensusJson;
     }

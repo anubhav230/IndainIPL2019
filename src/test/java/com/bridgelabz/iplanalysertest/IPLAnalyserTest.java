@@ -29,8 +29,9 @@ public class IPLAnalyserTest {
         try {
             iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
            String sortCensusData  = iplAnalyser.sortBattingAverage();
-            IndianBattingIPLCSV[] indiaCensusCSV = new Gson().fromJson(sortCensusData, IndianBattingIPLCSV[].class);
-            Assert.assertEquals("83.2", indiaCensusCSV[0].battingAvg);
+            IndianBattingIPLCSV[] indiaCensusCSV = new Gson()
+                    .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
+            Assert.assertEquals("MS Dhoni", indiaCensusCSV[indiaCensusCSV.length-1].player);
         } catch (IPLAnalyserException e) {
             e.printStackTrace();
         }
