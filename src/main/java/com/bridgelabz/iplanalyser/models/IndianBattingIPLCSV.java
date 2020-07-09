@@ -7,8 +7,8 @@ public class IndianBattingIPLCSV {
 //    @CsvBindByName(column = "POS", required = true)
 //    public int pos;
 
-    @CsvBindByName(column = "PLAYER", required = true)
-    public String player;
+//    @CsvBindByName(column = "PLAYER", required = true)
+//    public String player;
 
 //    @CsvBindByName(column = "Mat", required = true)
 //    public int mat;
@@ -25,6 +25,14 @@ public class IndianBattingIPLCSV {
 //    @CsvBindByName(column = "HS", required = true)
 //    public int hs;
 //
-//    @CsvBindByName(column = "Avg", required = true)
-//    public String ang;
+    @CsvBindByName(column = "Avg", required = true)
+    public double battingAvg;
+
+    @Override
+    public String toString() {
+        return "IndianBattingIPLCSV{" +
+                //"player='" + player + '\'' +
+                ", battingAvg='" + battingAvg + '\'' +
+                '}';
+    }
 }
