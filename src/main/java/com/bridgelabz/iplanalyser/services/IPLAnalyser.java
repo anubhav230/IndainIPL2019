@@ -12,9 +12,7 @@ import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
-import java.util.stream.StreamSupport;
 
 public class IPLAnalyser {
     List<IndianBattingIPLCSV> iPLCSVList;
@@ -34,6 +32,17 @@ public class IPLAnalyser {
         if (iPLCSVList == null || iPLCSVList.size() == 0)
             throw new IPLAnalyserException("No data", IPLAnalyserException .ExceptionType.NO_DATA);
         Comparator<IndianBattingIPLCSV> IPLComparator = Comparator.comparing(census -> census.battingAvg);
+        iPLCSVList.sort(IPLComparator);
+        System.out.println(iPLCSVList);
+        String sortedStateCensusJson = new Gson().toJson(iPLCSVList);
+        System.out.println(sortedStateCensusJson);
+        return sortedStateCensusJson;
+    }
+
+    public String sortHighestStrikeRate() throws IPLAnalyserException {
+        if (iPLCSVList == null || iPLCSVList.size() == 0)
+            throw new IPLAnalyserException("No data", IPLAnalyserException .ExceptionType.NO_DATA);
+        Comparator<IndianBattingIPLCSV> IPLComparator = Comparator.comparing(census -> census.strikeRate);
         iPLCSVList.sort(IPLComparator);
         System.out.println(iPLCSVList);
         String sortedStateCensusJson = new Gson().toJson(iPLCSVList);

@@ -4,39 +4,71 @@ import com.opencsv.bean.CsvBindByName;
 
 public class IndianBattingIPLCSV {
 
-//    @CsvBindByName(column = "POS", required = true)
-//    public int pos;
+
+
 
     @CsvBindByName(column = "PLAYER", required = true)
     public String player;
 
-//    @CsvBindByName(column = "Mat", required = true)
-//    public int mat;
-//
-//    @CsvBindByName(column = "Inns", required = true)
-//    public int inns;
-//
-//    @CsvBindByName(column = "NO", required = true)
-//    public int no;
-//
-//    @CsvBindByName(column = "Runs", required = true)
-//    public int runs;
-//
-//    @CsvBindByName(column = "HS", required = true)
-//    public int hs;
-//
-    @CsvBindByName(column = "Avg", required = true)
+    @CsvBindByName(column = "Mat", required = true)
+    public int match;
+
+    @CsvBindByName(column = "Inns", required = true)
+    public int innings;
+
+    @CsvBindByName(column = "Runs", required = true)
+    public int run;
+
+    @CsvBindByName(column = "HS", required = true)
+    public String highScore;
+
+    @CsvBindByName(column = "Avg")
     public double battingAvg;
+
+    @CsvBindByName(column = "SR")
+    public double strikeRate;
+
+    @CsvBindByName(column = "100", required = true)
+    public int centuary;
+
+    @CsvBindByName(column = "50", required = true)
+    public int halfCentuary;
+
+    @CsvBindByName(column = "4s", required = true)
+    public int fours;
+
+    @CsvBindByName(column = "6s", required = true)
+    public int six;
+
+
+
+
+
+
+
+
+
+
+//    @CsvBindByName(column = "PLAYER", required = true)
+//    public String player;
+//
+//    @CsvBindByName(column = "Avg", required = true)
+//    public double battingAvg;
+
+//    @CsvBindByName(column = "SR", required = true)
+//    public int strikingRate;
+//
 
 //    public IndianBattingIPLCSV(IndianBattingIPLCSV next) {
 //    }
 
 
-    @Override
-    public String toString() {
-        return "IndianBattingIPLCSV{" +
-                //"player='" + player + '\'' +
-                ", battingAvg='" + battingAvg + '\'' +
-                '}';
-    }
+//    @Override
+//    public String toString() {
+//        return "IndianBattingIPLCSV{" +
+//                "player='" + player + '\'' +
+//                ", battingAvg=" + battingAvg +
+//                //", strikingRate=" + strikingRate +
+//                '}';
+//    }
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 public class IPLAnalyserTest {
 
+
     String INDIA_IPL_CENSUS_CSV_FILE_PATH = "./src/test/resources/IPL2019FactsheetMostRuns.csv";
     IPLAnalyser iplAnalyser = new IPLAnalyser();
 
@@ -25,13 +26,27 @@ public class IPLAnalyserTest {
     }
 
     @Test
-    public void givenIPLCensusCSVFile_WhenSorted_Should_Returns_sortedBattingAvg() {
+    public void givenIPLCensusCSVFile_WhenSorted_Should_ReturnTopBattingAvgPlayer() {
         try {
             iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
            String sortCensusData  = iplAnalyser.sortBattingAverage();
             IndianBattingIPLCSV[] indiaCensusCSV = new Gson()
                     .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
             Assert.assertEquals("MS Dhoni", indiaCensusCSV[indiaCensusCSV.length-1].player);
+        } catch (IPLAnalyserException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    @Test
+    public void givenIPLCensusCSVFile_WhenSorted_ShouldReturns_TopStrikeRatePlayer() {
+        try {
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            String sortCensusData  = iplAnalyser.sortHighestStrikeRate();
+            IndianBattingIPLCSV[] indiaCensusCSV = new Gson()
+                    .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
+            Assert.assertEquals("Ishant Sharma", indiaCensusCSV[indiaCensusCSV.length-1].player);
         } catch (IPLAnalyserException e) {
             e.printStackTrace();
         }
