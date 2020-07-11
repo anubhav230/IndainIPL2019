@@ -4,6 +4,8 @@ import com.opencsv.bean.CsvBindByName;
 
 
 public class IndianBattingIPLCSV {
+    public IndianBattingIPLCSV() {
+    }
 
     @CsvBindByName(column = "PLAYER", required = true)
     public String player;
@@ -37,4 +39,10 @@ public class IndianBattingIPLCSV {
 
     @CsvBindByName(column = "6s", required = true)
     public int six;
+
+    public IndianBattingIPLCSV(double battingAvg, double strikeRate, String player) {
+        this.battingAvg = battingAvg;
+        this.strikeRate = strikeRate;
+        this.player = player;
+    }
 }

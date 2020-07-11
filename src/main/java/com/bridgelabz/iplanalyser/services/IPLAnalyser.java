@@ -5,8 +5,10 @@ import com.bridgelabz.iplanalyser.dao.IPLDAO;
 import com.bridgelabz.iplanalyser.exception.IPLAnalyserException;
 import com.google.gson.Gson;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class IPLAnalyser {
     List<IPLDAO> iPLCSVList;
@@ -38,8 +40,12 @@ public class IPLAnalyser {
         if (iPLCSVList == null || iPLCSVList.size() == 0)
             throw new IPLAnalyserException("No data", IPLAnalyserException.ExceptionType.NO_DATA);
         Comparator<IPLDAO> IPLComparator = Comparator.comparing(census -> census.strikeRate);
-        iPLCSVList.sort(IPLComparator);
-        String sortedStateCensusJson = new Gson().toJson(iPLCSVList);
+        ArrayList leagueDTO = iPLCSVList.stream()
+                .sorted(IPLComparator)
+                .map(censusDAO -> censusDAO.getIPLDTOS(type))
+                .collect(Collectors.toCollection(ArrayList::new));
+        //iPLCSVList.sort(IPLComparator);
+        String sortedStateCensusJson = new Gson().toJson(leagueDTO);
         return sortedStateCensusJson;
     }
 }

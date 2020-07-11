@@ -21,9 +21,8 @@ public abstract class IPLAdapter {
 
     public <E> List<IPLDAO> loadIPLCscData(Class<E> classType, String csvFilePath) throws IPLAnalyserException {
         List<IPLDAO> iPLCscDAOList = new ArrayList<>();
-        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath));) {
+        try (Reader reader = Files.newBufferedReader(Paths.get(csvFilePath))) {
             ICSVBuilder csvBuilder = CSVBuilderFactory.createCSVBuilder();
-
             Iterator<E> csvFileIterator = csvBuilder.getCSVFileIterator(reader, classType);
             switch (classType.getSimpleName()) {
                 case"IndianBattingIPLCSV":
@@ -34,7 +33,7 @@ public abstract class IPLAdapter {
             return iPLCscDAOList;
         } catch (IOException | CSVBuilderException e) {
             throw new IPLAnalyserException(e.getMessage(),
-                    IPLAnalyserException.ExceptionType.NO_DATA);
+                      IPLAnalyserException.ExceptionType.NO_DATA);
         }
     }
 }

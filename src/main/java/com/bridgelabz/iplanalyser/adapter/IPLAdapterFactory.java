@@ -12,6 +12,6 @@ public class IPLAdapterFactory {
         if (type.equals(IPLAnalyser.Type.BATTING))
             return new BattingAdapter().loadIPLCscData(csvFilePath);
         else
-            throw new IPLAnalyserException("Invalid Country", IPLAnalyserException.ExceptionType.INVALID_COUNTRY);
+            throw new IPLAnalyserException("Invalid type", IPLAnalyserException.ExceptionType.INVALID_TYPE);
     }
 }
