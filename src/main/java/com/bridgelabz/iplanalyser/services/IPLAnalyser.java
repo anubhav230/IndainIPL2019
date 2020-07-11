@@ -48,4 +48,17 @@ public class IPLAnalyser {
         String sortedStateCensusJson = new Gson().toJson(leagueDTO);
         return sortedStateCensusJson;
     }
+
+    public String sortHighestSixes() throws IPLAnalyserException {
+        if (iPLCSVList == null || iPLCSVList.size() == 0)
+            throw new IPLAnalyserException("No data", IPLAnalyserException.ExceptionType.NO_DATA);
+        Comparator<IPLDAO> IPLComparator = Comparator.comparing(census -> census.six);
+        ArrayList leagueDTO = iPLCSVList.stream()
+                .sorted(IPLComparator)
+                .map(censusDAO -> censusDAO.getIPLDTOS(type))
+                .collect(Collectors.toCollection(ArrayList::new));
+        //iPLCSVList.sort(IPLComparator);
+        String sortedStateCensusJson = new Gson().toJson(leagueDTO);
+        return sortedStateCensusJson;
+    }
 }

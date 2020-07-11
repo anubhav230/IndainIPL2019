@@ -14,7 +14,7 @@ public class IPLAnalyserTest {
     String INDIA_IPL_CENSUS_CSV_FILE_PATH = "./src/test/resources/IPL2019FactsheetMostRuns.csv";
 
     @Test
-    public void givenIPLCensusCSVFile_ReturnsCorrectRecords() {
+    public void givenIPLCSVFile_ReturnsCorrectRecords() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
             List numOfRecords = iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
@@ -25,7 +25,7 @@ public class IPLAnalyserTest {
     }
 
     @Test
-    public void givenIPLCensusCSVFile_WhenSorted_Should_ReturnTopBattingAvgPlayer() {
+    public void givenIPLCSVFile_WhenSorted_Should_ReturnTopBattingAvgPlayer() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
             iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
@@ -40,7 +40,7 @@ public class IPLAnalyserTest {
 
 
     @Test
-    public void givenIPLCensusCSVFile_WhenSorted_ShouldReturns_TopStrikeRatePlayer() {
+    public void givenIPLCSVFile_WhenSorted_ShouldReturns_TopStrikeRatePlayer() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
             iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
@@ -48,6 +48,20 @@ public class IPLAnalyserTest {
             IndianBattingIPLCSV[] iPLCSV = new Gson()
                     .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
             Assert.assertEquals("Ishant Sharma", iPLCSV[iPLCSV.length-1].player);
+        } catch (IPLAnalyserException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenIPLCSVFile_WhenSorted_ShouldReturns_TopSixHittingPlayer() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            String sortCensusData  = iplAnalyser.sortHighestSixes();
+            IndianBattingIPLCSV[] iPLCSV = new Gson()
+                    .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
+            Assert.assertEquals("Andre Russell", iPLCSV[iPLCSV.length-1].player);
         } catch (IPLAnalyserException e) {
             e.printStackTrace();
         }

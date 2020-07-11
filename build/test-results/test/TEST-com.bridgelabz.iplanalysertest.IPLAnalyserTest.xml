@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.iplanalysertest.IPLAnalyserTest" tests="3" skipped="0" failures="0" errors="0" timestamp="2020-07-11T20:27:18" hostname="LAPTOP-GT6OG951" time="0.532">
+<testsuite name="com.bridgelabz.iplanalysertest.IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-11T20:40:52" hostname="LAPTOP-GT6OG951" time="0.291">
   <properties/>
-  <testcase name="givenIPLCensusCSVFile_WhenSorted_Should_ReturnTopBattingAvgPlayer" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.3"/>
-  <testcase name="givenIPLCensusCSVFile_ReturnsCorrectRecords" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.112"/>
-  <testcase name="givenIPLCensusCSVFile_WhenSorted_ShouldReturns_TopStrikeRatePlayer" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.119"/>
+  <testcase name="givenIPLCSVFile_WhenSorted_ShouldReturns_TopSixHittingPlayer" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.291"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>

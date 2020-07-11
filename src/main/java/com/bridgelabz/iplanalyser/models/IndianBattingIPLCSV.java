@@ -40,9 +40,11 @@ public class IndianBattingIPLCSV {
     @CsvBindByName(column = "6s", required = true)
     public int six;
 
-    public IndianBattingIPLCSV(double battingAvg, double strikeRate, String player) {
+    public IndianBattingIPLCSV(double battingAvg, double strikeRate, String player, int six, int fours) {
         this.battingAvg = battingAvg;
         this.strikeRate = strikeRate;
         this.player = player;
+        this.six = six;
+        this.fours = fours;
     }
 }
