@@ -58,10 +58,24 @@ public class IPLAnalyserTest {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
             iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
-            String sortCensusData  = iplAnalyser.sortHighestSixes();
+            String sortCensusData  = iplAnalyser.sortHighestSixesHittingPlayer();
             IndianBattingIPLCSV[] iPLCSV = new Gson()
                     .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
             Assert.assertEquals("Andre Russell", iPLCSV[iPLCSV.length-1].player);
+        } catch (IPLAnalyserException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Test
+    public void givenIPLCSVFile_WhenSorted_ShouldReturns_TopFourHittingPlayer() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            String sortCensusData  = iplAnalyser.sortHighestFourHittingPlayer();
+            IndianBattingIPLCSV[] iPLCSV = new Gson()
+                    .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
+            Assert.assertEquals("Shikhar Dhawan", iPLCSV[iPLCSV.length-1].player);
         } catch (IPLAnalyserException e) {
             e.printStackTrace();
         }

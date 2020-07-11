@@ -44,12 +44,11 @@ public class IPLAnalyser {
                 .sorted(IPLComparator)
                 .map(censusDAO -> censusDAO.getIPLDTOS(type))
                 .collect(Collectors.toCollection(ArrayList::new));
-        //iPLCSVList.sort(IPLComparator);
         String sortedStateCensusJson = new Gson().toJson(leagueDTO);
         return sortedStateCensusJson;
     }
 
-    public String sortHighestSixes() throws IPLAnalyserException {
+    public String sortHighestSixesHittingPlayer() throws IPLAnalyserException {
         if (iPLCSVList == null || iPLCSVList.size() == 0)
             throw new IPLAnalyserException("No data", IPLAnalyserException.ExceptionType.NO_DATA);
         Comparator<IPLDAO> IPLComparator = Comparator.comparing(census -> census.six);
@@ -57,7 +56,18 @@ public class IPLAnalyser {
                 .sorted(IPLComparator)
                 .map(censusDAO -> censusDAO.getIPLDTOS(type))
                 .collect(Collectors.toCollection(ArrayList::new));
-        //iPLCSVList.sort(IPLComparator);
+        String sortedStateCensusJson = new Gson().toJson(leagueDTO);
+        return sortedStateCensusJson;
+    }
+
+    public String sortHighestFourHittingPlayer() throws IPLAnalyserException {
+        if (iPLCSVList == null || iPLCSVList.size() == 0)
+            throw new IPLAnalyserException("No data", IPLAnalyserException.ExceptionType.NO_DATA);
+        Comparator<IPLDAO> IPLComparator = Comparator.comparing(census -> census.fours);
+        ArrayList leagueDTO = iPLCSVList.stream()
+                .sorted(IPLComparator)
+                .map(censusDAO -> censusDAO.getIPLDTOS(type))
+                .collect(Collectors.toCollection(ArrayList::new));
         String sortedStateCensusJson = new Gson().toJson(leagueDTO);
         return sortedStateCensusJson;
     }
