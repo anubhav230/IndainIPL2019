@@ -7,6 +7,7 @@ import com.bridgelabz.iplanalyser.services.IPLAnalyser;
 public class IPLDAO {
 
 
+    public int run;
     public String player;
     public double strikeRate;
     public double battingAvg;
@@ -19,11 +20,12 @@ public class IPLDAO {
         player = indianBattingIPLCSV.player;
         six = indianBattingIPLCSV.six;
         fours = indianBattingIPLCSV.fours;
+         run = indianBattingIPLCSV.run;
     }
 
     public Object getIPLDTOS(IPLAnalyser.Type type) {
         if (type.equals(IPLAnalyser.Type.BATTING))
-            return new IndianBattingIPLCSV(battingAvg, strikeRate, player, six, fours);
+            return new IndianBattingIPLCSV(battingAvg, strikeRate, player, six, fours, run);
         else
             return null;
     }

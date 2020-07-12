@@ -74,4 +74,16 @@ public class IPLAnalyser {
         String sortedStateCensusJson = new Gson().toJson(leagueDTO);
         return sortedStateCensusJson;
     }
+
+    public String sortHighestRunsPlayer() throws IPLAnalyserException {
+        if (iPLCSVList == null || iPLCSVList.size() == 0)
+            throw new IPLAnalyserException("No data", IPLAnalyserException.ExceptionType.NO_DATA);
+        Comparator<IPLDAO> IPLComparator = Comparator.comparing(census -> census.run);
+        ArrayList leagueDTO = iPLCSVList.stream()
+                .sorted(IPLComparator)
+                .map(censusDAO -> censusDAO.getIPLDTOS(type))
+                .collect(Collectors.toCollection(ArrayList::new));
+        String sortedStateCensusJson = new Gson().toJson(leagueDTO);
+        return sortedStateCensusJson;
+    }
 }

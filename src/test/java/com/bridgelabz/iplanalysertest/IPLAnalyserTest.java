@@ -80,6 +80,7 @@ public class IPLAnalyserTest {
             IndianBattingIPLCSV[] iPLCSV = new Gson()
                     .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
             Assert.assertEquals("Shikhar Dhawan", iPLCSV[iPLCSV.length-1].player);
+            Assert.assertEquals(64, iPLCSV[iPLCSV.length-1].fours);
         } catch (IPLAnalyserException e) {
             e.printStackTrace();
         }
@@ -107,13 +108,11 @@ public class IPLAnalyserTest {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
             iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
-            String sortCensusData  = iplAnalyser.sortBattingAverage();
+            String sortCensusData  = iplAnalyser.sortHighestRunsPlayer();
             IndianBattingIPLCSV[] iPLCSV = new Gson()
-                    .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
-            Assert.assertEquals(83.2, iPLCSV[iPLCSV.length-1].battingAvg,0.0);
-            Assert.assertEquals("MS Dhoni", iPLCSV[iPLCSV.length-1].player);
-            Assert.assertEquals(134.62, iPLCSV[iPLCSV.length-1].strikeRate,0.0);
-
+                            .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
+            Assert.assertEquals(69.2, iPLCSV[iPLCSV.length-1].battingAvg,0.0);
+            Assert.assertEquals("David Warner", iPLCSV[iPLCSV.length-1].player);
         } catch (IPLAnalyserException e) {
             e.printStackTrace();
         }
