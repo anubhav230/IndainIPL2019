@@ -2,6 +2,7 @@ package com.bridgelabz.iplanalyser.adapter;
 
 import com.bridgelabz.iplanalyser.dao.IPLDAO;
 import com.bridgelabz.iplanalyser.exception.IPLAnalyserException;
+import com.bridgelabz.iplanalyser.models.IPLBowlingCSV;
 import com.bridgelabz.iplanalyser.models.IndianBattingIPLCSV;
 import com.csvbuilder.CSVBuilderException;
 import com.csvbuilder.CSVBuilderFactory;
@@ -29,6 +30,10 @@ public abstract class IPLAdapter {
                 while (csvFileIterator.hasNext())
                     iPLCscDAOList.add(new IPLDAO((IndianBattingIPLCSV) csvFileIterator.next()));
                 break;
+                case"IPLBowlingCSV":
+                    while (csvFileIterator.hasNext())
+                        iPLCscDAOList.add(new IPLDAO((IPLBowlingCSV) csvFileIterator.next()));
+                    break;
             }
             return iPLCscDAOList;
         } catch (IOException | CSVBuilderException e) {

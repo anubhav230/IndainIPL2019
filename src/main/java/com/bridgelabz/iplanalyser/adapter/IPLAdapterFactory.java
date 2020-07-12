@@ -11,6 +11,8 @@ public class IPLAdapterFactory {
     public List<IPLDAO> getLeagueData(IPLAnalyser.Type type, String... csvFilePath) throws IPLAnalyserException {
         if (type.equals(IPLAnalyser.Type.BATTING))
             return new BattingAdapter().loadIPLCscData(csvFilePath);
+        else if (type.equals(IPLAnalyser.Type.BOWLING))
+            return new BowlingAdapter().loadIPLCscData(csvFilePath);
         else
             throw new IPLAnalyserException("Invalid type", IPLAnalyserException.ExceptionType.INVALID_TYPE);
     }

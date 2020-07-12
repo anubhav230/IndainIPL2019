@@ -3,7 +3,6 @@ package com.bridgelabz.iplanalyser.adapter;
 import com.bridgelabz.iplanalyser.dao.IPLDAO;
 import com.bridgelabz.iplanalyser.exception.IPLAnalyserException;
 import com.bridgelabz.iplanalyser.models.IPLBowlingCSV;
-import com.bridgelabz.iplanalyser.models.IndianBattingIPLCSV;
 
 import java.util.List;
 
