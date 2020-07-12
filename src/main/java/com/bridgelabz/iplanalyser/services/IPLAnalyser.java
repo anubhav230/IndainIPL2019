@@ -74,6 +74,4 @@ public class IPLAnalyser {
         String sortedStateCensusJson = new Gson().toJson(leagueDTO);
         return sortedStateCensusJson;
     }
-
-
 }

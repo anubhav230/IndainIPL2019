@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.iplanalysertest.IPLAnalyserTest" tests="5" skipped="0" failures="0" errors="0" timestamp="2020-07-12T11:04:41" hostname="LAPTOP-GT6OG951" time="0.836">
+<testsuite name="com.bridgelabz.iplanalysertest.IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-12T11:34:31" hostname="LAPTOP-GT6OG951" time="0.318">
   <properties/>
-  <testcase name="givenIPLCSVFile_WhenSorted_ShouldReturns_TopStrikeRatePlayer" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.328"/>
-  <testcase name="givenIPLCSVFile_WhenSorted_ShouldReturns_TopFourHittingPlayer" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.146"/>
-  <testcase name="givenIPLCSVFile_WhenSorted_Should_ReturnTopBattingAvgPlayer" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.122"/>
-  <testcase name="givenIPLCSVFile_ReturnsCorrectRecords" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.13"/>
-  <testcase name="givenIPLCSVFile_WhenSorted_ShouldReturns_TopSixHittingPlayer" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.11"/>
+  <testcase name="givenIPLCSVFile_WhenSorted_Should_ReturnTopBattingAvgPlayerStrikeRate" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.318"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
