@@ -10,7 +10,7 @@ public class BattingAdapter extends IPLAdapter {
 
     @Override
     public List<IPLDAO> loadIPLCscData(String... csvFilePath) throws IPLAnalyserException {
-        List<IPLDAO> indiaCensusList = super.loadIPLCscData(IndianBattingIPLCSV.class, csvFilePath[0]);
-        return indiaCensusList;
+        List<IPLDAO> indiaLeagueList = super.loadIPLCscData(IndianBattingIPLCSV.class, csvFilePath[0]);
+        return indiaLeagueList;
     }
 }

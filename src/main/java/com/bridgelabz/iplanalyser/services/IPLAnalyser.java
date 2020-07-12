@@ -23,7 +23,7 @@ public class IPLAnalyser {
     }
 
     public List<IPLDAO> loadIPLCscData(String... csvFilePath) throws IPLAnalyserException {
-        this.iPLCSVList = new IPLAdapterFactory().getCensusData(type, csvFilePath);
+        this.iPLCSVList = new IPLAdapterFactory().getLeagueData(type, csvFilePath);
         return iPLCSVList;
     }
 
@@ -31,8 +31,11 @@ public class IPLAnalyser {
         if (iPLCSVList == null || iPLCSVList.size() == 0)
             throw new IPLAnalyserException("No data", IPLAnalyserException.ExceptionType.NO_DATA);
         Comparator<IPLDAO> IPLComparator = Comparator.comparing(census -> census.battingAvg);
-        iPLCSVList.sort(IPLComparator);
-        String sortedStateCensusJson = new Gson().toJson(iPLCSVList);
+        ArrayList leagueDTO = iPLCSVList.stream()
+                .sorted(IPLComparator)
+                .map(censusDAO -> censusDAO.getIPLDTOS(type))
+                .collect(Collectors.toCollection(ArrayList::new));
+        String sortedStateCensusJson = new Gson().toJson(leagueDTO);
         return sortedStateCensusJson;
     }
 
@@ -71,4 +74,6 @@ public class IPLAnalyser {
         String sortedStateCensusJson = new Gson().toJson(leagueDTO);
         return sortedStateCensusJson;
     }
+
+
 }

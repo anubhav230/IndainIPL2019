@@ -8,7 +8,7 @@ import com.bridgelabz.iplanalyser.services.IPLAnalyser;
 import java.util.List;
 
 public class IPLAdapterFactory {
-    public List<IPLDAO> getCensusData(IPLAnalyser.Type type, String... csvFilePath) throws IPLAnalyserException {
+    public List<IPLDAO> getLeagueData(IPLAnalyser.Type type, String... csvFilePath) throws IPLAnalyserException {
         if (type.equals(IPLAnalyser.Type.BATTING))
             return new BattingAdapter().loadIPLCscData(csvFilePath);
         else
