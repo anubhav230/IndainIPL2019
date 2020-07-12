@@ -1,12 +1,14 @@
 package com.bridgelabz.iplanalyser.dao;
 
 import com.bridgelabz.iplanalyser.exception.IPLAnalyserException;
+import com.bridgelabz.iplanalyser.models.IPLBowlingCSV;
 import com.bridgelabz.iplanalyser.models.IndianBattingIPLCSV;
 import com.bridgelabz.iplanalyser.services.IPLAnalyser;
 
 public class IPLDAO {
 
 
+    public double bowlingAverage;
     public int run;
     public String player;
     public double strikeRate;
@@ -21,6 +23,10 @@ public class IPLDAO {
         six = indianBattingIPLCSV.six;
         fours = indianBattingIPLCSV.fours;
          run = indianBattingIPLCSV.run;
+    }
+
+    public IPLDAO(IPLBowlingCSV iplBowlingCSV) {
+        bowlingAverage = iplBowlingCSV.bowlingAverage;
     }
 
     public Object getIPLDTOS(IPLAnalyser.Type type) {

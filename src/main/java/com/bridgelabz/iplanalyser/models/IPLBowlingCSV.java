@@ -23,7 +23,7 @@ public class IPLBowlingCSV {
     public int wkts;
 
     @CsvBindByName(column = "Avg", required = true)
-    public double average;
+    public double bowlingAverage;
 
     @CsvBindByName(column = "SR", required = true)
     public double strikeRate;
@@ -36,5 +36,7 @@ public class IPLBowlingCSV {
 
     @CsvBindByName(column = "Econ", required = true)
     public double economy;
+
+
 
 }
