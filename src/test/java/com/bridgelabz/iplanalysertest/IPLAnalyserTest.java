@@ -11,13 +11,14 @@ import java.util.List;
 
 public class IPLAnalyserTest {
 
-    String INDIA_IPL_CENSUS_CSV_FILE_PATH = "./src/test/resources/IPL2019FactsheetMostRuns.csv";
+    String INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BATTING = "./src/test/resources/IPL2019FactsheetMostRuns.csv";
+    String INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BOWLING = "./src/test/resources/IPL2019FactsheetMostWkts.csv";
 
     @Test
     public void givenIPLCSVFile_ReturnsCorrectRecords() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
-            List numOfRecords = iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            List numOfRecords = iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BATTING);
             Assert.assertEquals(100, numOfRecords.size());
         } catch (IPLAnalyserException e) {
             e.printStackTrace();
@@ -28,7 +29,7 @@ public class IPLAnalyserTest {
     public void givenIPLCSVFile_WhenSorted_Should_ReturnTopBattingAvgPlayer() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
-            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BATTING);
            String sortCensusData  = iplAnalyser.sortBattingAverage();
             IndianBattingIPLCSV[] iPLCSV = new Gson()
                     .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
@@ -44,7 +45,7 @@ public class IPLAnalyserTest {
     public void givenIPLCSVFile_WhenSorted_ShouldReturns_TopStrikeRatePlayer() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
-            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BATTING);
             String sortCensusData  = iplAnalyser.sortHighestStrikeRate();
             IndianBattingIPLCSV[] iPLCSV = new Gson()
                     .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
@@ -59,7 +60,7 @@ public class IPLAnalyserTest {
     public void givenIPLCSVFile_WhenSorted_ShouldReturns_TopSixHittingPlayer() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
-            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BATTING);
             String sortCensusData  = iplAnalyser.sortHighestSixesHittingPlayer();
             IndianBattingIPLCSV[] iPLCSV = new Gson()
                     .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
@@ -75,7 +76,7 @@ public class IPLAnalyserTest {
     public void givenIPLCSVFile_WhenSorted_ShouldReturns_TopFourHittingPlayer() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
-            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BATTING);
             String sortCensusData  = iplAnalyser.sortHighestFourHittingPlayer();
             IndianBattingIPLCSV[] iPLCSV = new Gson()
                     .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
@@ -90,7 +91,7 @@ public class IPLAnalyserTest {
     public void givenIPLCSVFile_WhenSorted_ShouldReturns_TopStrikeRatePlayerNameAndSixesAndFours() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
-            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BATTING);
             String sortCensusData  = iplAnalyser.sortHighestStrikeRate();
             IndianBattingIPLCSV[] iPLCSV = new Gson()
                     .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
@@ -107,7 +108,7 @@ public class IPLAnalyserTest {
     public void givenIPLCSVFile_WhenSorted_Should_ReturnTopBattingAvgPlayerStrikeRate() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
-            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BATTING);
             String sortCensusData  = iplAnalyser.sortHighestRunsPlayer();
             IndianBattingIPLCSV[] iPLCSV = new Gson()
                             .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
@@ -122,7 +123,7 @@ public class IPLAnalyserTest {
     public void givenIPLCSVFile_WhenSorted_Should_ReturnTopRunsPlayerStrikeRate() {
         try {
             IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
-            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BATTING);
             String sortCensusData  = iplAnalyser.sortHighestRunsPlayer();
             IndianBattingIPLCSV[] iPLCSV = new Gson()
                     .fromJson(sortCensusData, IndianBattingIPLCSV[].class);
@@ -133,16 +134,16 @@ public class IPLAnalyserTest {
         }
     }
 
-//    @Test
-//    public void givenIPLCSVFile_ReturnsCorrectRecords() {
-//        try {
-//            IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BATTING);
-//            List numOfRecords = iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH);
-//            Assert.assertEquals(101, numOfRecords.size());
-//        } catch (IPLAnalyserException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    @Test
+    public void givenBowlingIPLCSVFile_ReturnsCorrectRecords() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BOWLING);
+            List numOfRecords = iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BOWLING);
+            Assert.assertEquals(99, numOfRecords.size());
+        } catch (IPLAnalyserException e) {
+            e.printStackTrace();
+        }
+    }
 
 
 }

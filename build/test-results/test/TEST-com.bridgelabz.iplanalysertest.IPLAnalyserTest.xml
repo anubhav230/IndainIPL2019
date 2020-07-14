@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.bridgelabz.iplanalysertest.IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-14T18:19:52" hostname="LAPTOP-GT6OG951" time="0.3">
+<testsuite name="com.bridgelabz.iplanalysertest.IPLAnalyserTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2020-07-14T18:34:55" hostname="LAPTOP-GT6OG951" time="0.315">
   <properties/>
-  <testcase name="givenIPLCSVFile_WhenSorted_Should_ReturnTopRunsPlayerStrikeRate" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.3"/>
+  <testcase name="givenBowlingIPLCSVFile_ReturnsCorrectRecords" classname="com.bridgelabz.iplanalysertest.IPLAnalyserTest" time="0.315"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
