@@ -4,6 +4,7 @@ import com.opencsv.bean.CsvBindByName;
 
 
 public class IndianBattingIPLCSV {
+
     public IndianBattingIPLCSV() {
     }
 

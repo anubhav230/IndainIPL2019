@@ -1,6 +1,7 @@
 package com.bridgelabz.iplanalysertest;
 
 import com.bridgelabz.iplanalyser.exception.IPLAnalyserException;
+import com.bridgelabz.iplanalyser.models.IPLBowlingCSV;
 import com.bridgelabz.iplanalyser.models.IndianBattingIPLCSV;
 import com.bridgelabz.iplanalyser.services.IPLAnalyser;
 import com.google.gson.Gson;
@@ -145,5 +146,33 @@ public class IPLAnalyserTest {
         }
     }
 
+    @Test
+    public void givenIPLCSVFile_WhenSorted_Should_ReturnTopBowlingAvgPlayer() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BOWLING);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BOWLING);
+            String sortCensusData  = iplAnalyser.sortTopBowlingAveragePlayer();
+            IPLBowlingCSV[] iPLCSV = new Gson()
+                    .fromJson(sortCensusData, IPLBowlingCSV[].class);
+            Assert.assertEquals(166.0, iPLCSV[iPLCSV.length-1].bowlingAverage,0.0);
+            Assert.assertEquals("Krishnappa Gowtham", iPLCSV[iPLCSV.length-1].bPlayer);
+        } catch (IPLAnalyserException e) {
+            e.printStackTrace();
+        }
+    }
 
+    @Test
+    public void givenIPLCSVFile_WhenSorted_Should_ReturnTopBowlingStrikeRatePlayer() {
+        try {
+            IPLAnalyser iplAnalyser = new IPLAnalyser(IPLAnalyser.Type.BOWLING);
+            iplAnalyser.loadIPLCscData(INDIA_IPL_CENSUS_CSV_FILE_PATH_FOR_BOWLING);
+            String sortCensusData  = iplAnalyser.sortTopBowlingStrikeRatePlayer();
+            IPLBowlingCSV[] iPLCSV = new Gson()
+                    .fromJson(sortCensusData, IPLBowlingCSV[].class);
+            Assert.assertEquals(120.0, iPLCSV[iPLCSV.length-1].bStrikeRate,0.0);
+            Assert.assertEquals("Krishnappa Gowtham", iPLCSV[iPLCSV.length-1].bPlayer);
+        } catch (IPLAnalyserException e) {
+            e.printStackTrace();
+        }
+    }
 }

@@ -90,7 +90,7 @@ public class IPLAnalyser {
     public String sortTopBowlingAveragePlayer() throws IPLAnalyserException {
         if (iPLCSVList == null || iPLCSVList.size() == 0)
             throw new IPLAnalyserException("No data", IPLAnalyserException.ExceptionType.NO_DATA);
-        Comparator<IPLDAO> IPLComparator = Comparator.comparing(census -> census.run);
+        Comparator<IPLDAO> IPLComparator = Comparator.comparing(census -> census.bowlingAverage);
         ArrayList leagueDTO = iPLCSVList.stream()
                 .sorted(IPLComparator)
                 .map(censusDAO -> censusDAO.getIPLDTOS(type))
@@ -99,5 +99,15 @@ public class IPLAnalyser {
         return sortedStateCensusJson;
     }
 
-
+    public String sortTopBowlingStrikeRatePlayer() throws IPLAnalyserException {
+        if (iPLCSVList == null || iPLCSVList.size() == 0)
+            throw new IPLAnalyserException("No data", IPLAnalyserException.ExceptionType.NO_DATA);
+        Comparator<IPLDAO> IPLComparator = Comparator.comparing(census -> census.bowlingAverage);
+        ArrayList leagueDTO = iPLCSVList.stream()
+                .sorted(IPLComparator)
+                .map(censusDAO -> censusDAO.getIPLDTOS(type))
+                .collect(Collectors.toCollection(ArrayList::new));
+        String sortedStateCensusJson = new Gson().toJson(leagueDTO);
+        return sortedStateCensusJson;
+    }
 }
